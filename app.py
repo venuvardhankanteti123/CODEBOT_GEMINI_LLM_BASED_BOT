@@ -3,7 +3,7 @@ import google.generativeai as genai
 import streamlit as st
 from dotenv import load_dotenv
 load_dotenv()
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+genai.configure(api_key=os.getenv(secrets.secrets.get()))
 def codebot(input_prompt,question):
     model=genai.GenerativeModel('gemini-pro')
     return model.generate_content([input_prompt,question]).text
